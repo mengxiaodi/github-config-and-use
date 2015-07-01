@@ -1,0 +1,95 @@
+我想讲test1下面的所有东西提交到github上的github-test1目录。
+
+首先切换目录：在test1目录打开，右击bash，输入命令：git init
+
+第二,查看当前test1目录的跟踪状态，即是否添加到git的版本管理了。输入命令: git status
+如果都为红色，则表示没有跟踪。
+
+第三，如果为红色，则需要添加。
+输入命令: git add .
+表示将当前的test1目录的内容添加到版本控制里面。
+
+第四：注释，输入命令：git commit -m '注释内容'
+
+第五：指定远程的上传目录地址,输入命令:
+git remote add origin git@github.com:mengxiaodi/123
+
+第六，检查链接的是哪个远程的地址,输入命令: git remote -v
+或者 查看当前链接的是哪个远程仓库及具体信息，输入命令：git remote show origin
+
+第七,上传，输入命令.(-u表示以后默认的都是这个远程主机): git push -u origin master
+
+
+
+其他命令：
+
+检查是否链接到github，输入命令： ssh -T git@github.com
+
+单词:
+authenticated provide shell access
+
+
+
+二：假如我本地删除了文件，想让远程也更新（和本地一样）
+
+首先在本地删除该文件aa。
+输入命令：git status
+有红色的提示，为aa
+第二：从项目管理里面删除。输入命令：git rm 目录地址/aa
+第三：git status，即查看到当前的最新状态.
+第四： 查看远程地址是否正确,输入命令：git remote -v
+第五：提交更新:git push -u origin master
+
+
+
+三：git目录问题
+
+git init在哪里，当前目录对应的就是github上的
+
+
+
+四：更改文件后，提交到远程目录。
+第一：检查是否链接的是远程的对应的目录:git remote -v
+第二：检查当前那些文件更新了:git status
+第三：提交前写好文件的描述 :git commit -m '注释内容'
+第四: git push -u origin master (或者直接git push)
+
+
+五：提交到本地版本管理。
+
+
+
+
+六：
+
+
+
+常用命令:
+
+Git远程分支管理
+git push origin master # 将本地主分支推到远程主分支
+git push -u origin master # 将本地主分支推到远程(如无远程主分支则创建，用于初始化远程仓库)
+
+
+
+Git远程仓库管理
+git remote -v # 查看远程服务器地址和仓库名称
+git remote add origin git@ github:robbin/robbin_site.git # 添加远程仓库地址
+git remote show origin # 查看远程服务器仓库状态
+git remote set-url origin git@github.com:robbin/robbin_site.git # 设置远程仓库地址(用于修改远程仓库地址) 
+
+
+
+
+
+相关网址推荐:
+http://www.ruanyifeng.com/blog/2014/06/git_remote.html
+
+http://www.cnblogs.com/cspku/articles/Git_cmds.html
+
+
+
+
+
+
+
