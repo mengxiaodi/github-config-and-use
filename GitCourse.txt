@@ -35,7 +35,7 @@ authenticated provide shell access
 首先在本地删除该文件aa。
 输入命令：git status
 有红色的提示，为aa
-第二：从项目管理里面删除。输入命令：git rm 目录地址/aa
+第二：从项目管理里面删除。输入命令：git rm -r 目录地址/aa
 第三：git status，即查看到当前的最新状态.
 第四： 查看远程地址是否正确,输入命令：git remote -v
 第五：提交更新:git push -u origin master
@@ -44,7 +44,9 @@ authenticated provide shell access
 
 三：git目录问题
 
-git init在哪里，当前目录对应的就是github上的
+git init在哪个目录，当前目录对应的就是github上的目录地址。
+
+要将那个目录上传到github的时候，要在当前目录git init。当前目录需要有.git 这个目录。
 
 
 
@@ -56,11 +58,20 @@ git init在哪里，当前目录对应的就是github上的
 
 
 五：提交到本地版本管理。
+git commit -m  '注释'
 
 
 
+六：要修改删除远程github上面目录里面的某个文件的时候，需要先更新到本地，然后把github上面的这个仓库删了，在本地删除修改好后，然后提交本地的版本库，即更新。最后，将本地更新后的版本库，上传到github.
 
-六：
+更新到本地(包含merge,fetch不包含merge)：
+git pull origin master
+更新后，
+手动删除当前目录文件，然后，git 移除项目跟踪里面的文件，命令：
+git rm -r <文件名>
+然后更新，命令：
+git commit -m '提交更新'
+然后git status的时候，就没有红色的了。
 
 
 
@@ -79,6 +90,25 @@ git remote show origin # 查看远程服务器仓库状态
 git remote set-url origin git@github.com:robbin/robbin_site.git # 设置远程仓库地址(用于修改远程仓库地址) 
 
 
+============================================================
+git pull：相当于是从远程获取最新版本并merge到本地
+
+git pull origin master
+
+git fetch：相当于是从远程获取最新版本到本地，不会自动merge
+git fetch origin master
+git log -p master..origin/master
+git merge origin/master
+ 以上命令的含义：
+   首先从远程的origin的master主分支下载最新的版本到origin/master分支上
+   然后比较本地的master分支和origin/master分支的差别
+   最后进行合并
+   上述过程其实可以用以下更清晰的方式来进行：
+
+git fetch origin master:tmp
+git diff tmp 
+git merge tmp
+==================================================================
 
 
 
